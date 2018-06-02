@@ -27,11 +27,29 @@ void insertionSort(int *array, int n) {
     }
 }
 
+void selectionSort(int *array, int n) {
+    int tmp, minIndex;
+    for (int i = 0; i < n; i++) {
+        minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (i != minIndex) {
+            tmp = array[minIndex];
+            array[minIndex] = array[i];
+            array[i] = tmp;
+        }
+    }
+}
+
 int main() {
     int data[] = {4, 1, 89, 45, 2, 8, 10, 41, 4, 9, 10};
     int n = sizeof(data) / sizeof(data[0]);
 //    bubbleSort(data, n);
-    insertionSort(data, n);
+//    insertionSort(data, n);
+    selectionSort(data, n);
 
     for (int i = 0; i < n; i++) {
         printf("%d, ", data[i]);
